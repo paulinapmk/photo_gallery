@@ -25,25 +25,24 @@ class PostsController < ApplicationController
   # POST /posts.json
   def create
     @post = Post.new(post_params)
-
-    respond_to do |format|
-      if @post.save
-        format.html { redirect_to posts_path, notice: 'Post was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @post.save
+      flash[:success] = "Your post has been created!"
+      redirect_to posts_path
+    else
+      flash[:alert] = "Your new post couldn't be created!  Please check the form."
+      render :new
     end
   end
 
   # PATCH/PUT /posts/1
   # PATCH/PUT /posts/1.json
   def update
-    respond_to do |format|
-      if @post.update(post_params)
-        format.html { redirect_to @post, notice: 'Post was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @post.update(post_params)
+      flash[:success] = "Post updated."
+      redirect_to posts_path
+    else
+      flash.now[:alert] = "Update failed.  Please check the form."
+      render :edit
     end
   end
 
@@ -51,10 +50,8 @@ class PostsController < ApplicationController
   # DELETE /posts/1.json
   def destroy
     @post.destroy
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    flash[:success] = "Post deleted."
+    redirect_to posts_url
   end
 
   private
