@@ -47,3 +47,4 @@ end
 
 gem "paperclip", "~> 5.0.0"
 gem 'simple_form', '~> 3.1.0'
+gem 'devise'
