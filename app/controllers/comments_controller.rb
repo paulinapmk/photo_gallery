@@ -1,6 +1,17 @@
 class CommentsController < ApplicationController
   before_action :set_post
 
+  def index
+    @comments = @post.comments.order("created_at ASC")
+
+    respond_to do |format|
+      format.html { render :layout => false } #We're requesting that the application's layout view is only
+      # rendered as part of this request, if the request isn't made with AJAX.
+      # Simply put, we won't get the added layout html returned during an AJAX call,
+      # which is great news, we only want the extra comments from this index after all, not an extra navbar
+    end
+  end
+
   def create
     @comment = @post.comments.build(comment_params)
     @comment.user_id = current_user.id
