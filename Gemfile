@@ -55,3 +55,4 @@ gem "paperclip", "~> 5.0.0"
 gem 'simple_form', '~> 3.1.0'
 gem 'devise'
 gem 'kaminari', '~> 0.16.3'
+gem 'acts_as_votable', '~> 0.10.0'
