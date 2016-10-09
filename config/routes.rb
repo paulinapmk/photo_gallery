@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     resources :comments
     member do
       get 'like'
+      get 'unlike'
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.
