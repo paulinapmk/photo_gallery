@@ -58,6 +58,7 @@ class PostsController < ApplicationController
 
   def like
     if @post.liked_by current_user
+      create_notification @post, 'lik'
       respond_to do |format|
         format.html { redirect_to :back }
         format.js
@@ -67,6 +68,7 @@ class PostsController < ApplicationController
 
   def unlike
     if @post.unliked_by current_user
+      create_notification @post, 'unlik'
       respond_to do |format|
         format.html { redirect_to :back }
         format.js
@@ -79,6 +81,15 @@ class PostsController < ApplicationController
     def set_post
       @post = Post.find(params[:id])
     end
+
+  def create_notification post, type
+    return if post.user.id == current_user.id
+    Notification.create(user_id: post.user.id,
+                        notified_by_id: current_user.id,
+                        post_id: post.id,
+                        comment_id: post.id,
+                        notice_type: type)
+  end
 
   # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
