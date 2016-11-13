@@ -302,6 +302,29 @@ body {
   button {
     border: none;
   }
+  .dropdown-menu {
+    width: 460px;
+  }
+  li {
+    clear: both;
+  }
+  .single-notification {
+    a {
+      float: left;
+    }
+    .mark-as-read {
+      float: right;
+      margin-left: 10px;
+      :hover {
+        text-decoration: none;
+      }
+    }
+  }
+  .time-ago {
+    color: #A5A7AA;
+    float: right;
+    padding: 3px 20px;
+  }
 }
 
 .notification-index-list {
@@ -312,4 +335,18 @@ body {
     background-color: white;
     padding: 1em;
   }
+  .time-ago {
+    color: #A5A7AA;
+    float: right;
+  }
+}
+
+.mark-as-read a {
+  text-decoration: none;
+  color: darkblue !important;
+}
+
+.mark-as-read a:hover, a:focus {
+  text-decoration: none;
+  color: darkblue;
 }

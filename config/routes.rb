@@ -18,6 +18,8 @@ Rails.application.routes.draw do
   get ':user_name/edit', to: 'profiles#edit', as: :edit_profile
   patch ':user_name/edit', to: 'profiles#update', as: :update_profile
   get 'notifications/:id/link_through', to: 'notifications#link_through', as: :link_through
+  get 'notifications/:id/mark_as_read', to: 'notifications#mark_as_read', as: :mark_as_read
+  get 'notifications/:id/mark_as_unread', to: 'notifications#mark_as_unread', as: :mark_as_unread
 
 
   # Example of regular route:

@@ -1,0 +1,9 @@
+$("#mark_as_unread_<%= @notification.id %>").removeClass('glyphicon-flag').addClass('glyphicon-ok');
+$("#mark_as_unread_<%= @notification.id %>").removeAttr('href').attr('href', '/notifications/<%= @notification.id %>/mark_as_read');
+$("#mark_as_read_<%= @notification.id %>").removeAttr('title').attr('title', 'Mark as read');
+$("#mark_as_unread_<%= @notification.id %>").removeAttr('id').attr('id', 'mark_as_read_<%= @notification.id %>');
+$("#mark_as_unread_<%= @notification.id %>").html("<%= j (render partial: 'notifications/unread') %>");
+$("#dropdownMenu1").html("<%= j (render partial: 'notifications/counter') %>");
+
+
+
