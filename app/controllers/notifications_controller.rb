@@ -6,7 +6,7 @@ class NotificationsController < ApplicationController
   end
 
   def index
-    @notifications = current_user.notifications.order('created_at DESC')
+    @notifications = current_user.notifications.includes(:notified_by).order('created_at DESC')
   end
 
   def mark_as_read
