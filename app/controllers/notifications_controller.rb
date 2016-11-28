@@ -13,7 +13,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.update read: true
     respond_to do |format|
-      format.js
+      format.js {render 'notifications/mark_notification'}
     end
   end
 
@@ -21,7 +21,7 @@ class NotificationsController < ApplicationController
     @notification = Notification.find(params[:id])
     @notification.update read: false
     respond_to do |format|
-      format.js
+      format.js {render 'notifications/mark_notification'}
     end
   end
 
