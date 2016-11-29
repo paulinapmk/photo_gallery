@@ -1,7 +1,7 @@
 class Post < ActiveRecord::Base
   acts_as_votable
   validates :image, presence: true
-  belongs_to :user
+  belongs_to :user, counter_cache: true
   validates :user_id, presence: true
   has_many :comments, dependent: :destroy
   has_many :notifications, dependent: :destroy
